@@ -7,11 +7,28 @@ import (
 )
 
 func GenerateNanoID() (string, error) {
-	id, err := gonanoid.New()
+	nanoID, err := gonanoid.New()
 	if err != nil {
 		log.Fatal(err)
+
 		return "", err
 	}
 
-	return id, nil
+	return nanoID, nil
+}
+
+func GenerateNonSecureNanoID(strings string, length int) (string, error) {
+	defaultStrings := "abcdefghijklmnopqrstuvwxyz1234567890"
+	if strings == "" {
+		strings = defaultStrings
+	}
+
+	nanoID, err := gonanoid.Generate(strings, length)
+	if err != nil {
+		log.Fatal(err)
+
+		return "", err
+	}
+
+	return nanoID, nil
 }
