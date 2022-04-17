@@ -5,6 +5,8 @@ import (
 	"net/http"
 )
 
+type Map map[string]interface{}
+
 func RenderJSON(w http.ResponseWriter, status int, body interface{}) {
 	w.WriteHeader(status)
 	w.Header().Set("Content-Type", "application/json")
